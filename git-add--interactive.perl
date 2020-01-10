@@ -1546,6 +1546,8 @@ sub patch_update_file {
 		print colored $prompt_color, "(", ($ix+1), "/$num) ",
 			sprintf(__($patch_update_prompt_modes{$patch_mode}{$hunk[$ix]{TYPE}}), $other);
 
+		select()->flush();
+
 		my $line = prompt_single_character;
 		last unless defined $line;
 		if ($line) {
